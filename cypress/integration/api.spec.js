@@ -11,8 +11,11 @@ describe('REST API Test', () =>{
 
     it('API TEST - Validate Status Code', () => {
         cy.request('https://pokeapi.co/api/v2/pokemon/25').as('pokemon')
-        cy.get('@pokemon').its('status').should('equal', 200)
-
-        
+        cy.get('@pokemon').its('status').should('equal', 200)   
     })
+
+    it('API TEST - Validate Name Value', () => {
+        cy.request('https://pokeapi.co/api/v2/pokemon/25').as('pokemon')
+        cy.get('@pokemon').its('body').should('include', {name:'pikachu'})
+    })   
 })
