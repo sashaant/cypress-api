@@ -18,4 +18,21 @@ describe('REST API Test', () =>{
         cy.request('https://pokeapi.co/api/v2/pokemon/25').as('pokemon')
         cy.get('@pokemon').its('body').should('include', {name:'pikachu'})
     })   
+
+    it.only('API TEST - Validate Nagative Status Code', () => {
+        cy.request({
+            method: 'GET',
+            url:'https://pokeapi.co/api/v2/pokemon/1000',
+            failOnStatusCode: false,
+        }).as('pokemon') 
+        cy.get('@pokemon').its('status').should('equal', 404)   
+    })   
+
+
+    it('API TEST - Challenge', () => {
+        cy.request('https://api.chucknorris.io/jokes/random').as('joke')
+        cy.get('@joke').its('status').should('equal', 200)
+    })
+
+    
 })
