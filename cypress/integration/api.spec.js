@@ -19,14 +19,14 @@ describe('REST API Test', () =>{
         cy.get('@pokemon').its('body').should('include', {name:'pikachu'})
     })   
 
-    it.only('API TEST - Validate Nagative Status Code', () => {
-        cy.request({
-            method: 'GET',
-            url:'https://pokeapi.co/api/v2/pokemon/1000',
-            failOnStatusCode: false,
-        }).as('pokemon') 
-        cy.get('@pokemon').its('status').should('equal', 404)   
-    })   
+    // it.only('API TEST - Validate Nagative Status Code', () => {
+    //     cy.request({
+    //         method: 'GET',
+    //         url:'https://pokeapi.co/api/v2/pokemon/1000',
+    //         failOnStatusCode: false,
+    //     }).as('pokemon') 
+    //     cy.get('@pokemon').its('status').should('equal', 404)   
+    // })   
 
 
     it('API TEST - Challenge', () => {
